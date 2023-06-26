@@ -16,16 +16,11 @@ export const config: TemplateConfig = {
     filter: { entityTypes: ["ce_page"] },
     fields: [
       "logo",
-      "c_secondaryCTA",
-      "c_mainCTA",
       "c_cTAFull",
       "c_tagline",
       "name",
-      "c_featuredProducts.name",
-      "c_featuredProducts.logo",
-      "c_featuredProducts.c_subtitle",
-      "c_relatedFAQs.question",
-      "c_relatedFAQs.answer",
+      "c_featuredProducts",
+      "c_relatedFAQs",
       "slug",
     ],
   },
@@ -40,6 +35,16 @@ export default function Product({ document }: TemplateProps) {
       <CenteredContainer>
         <Header backgroundColor="#000000" logo={`${document.logo.image.url}`} />
         <CTASectionCentered
+          SecondaryCTA={{ backgroundColor: "", link: ``, label: `` }}
+          showSecondaryCTA={false}
+          MainCTA={{
+            backgroundColor: "bg-black",
+            link: `${document.c_cTAFull.cTALink}`,
+            label: `${document.c_cTAFull.cTALabel}`,
+          }}
+          paragraph={`${document.c_tagline}`}
+          heading={`${document.name}`}
+          BackgroundColor=""
         />
         <ItemList
           title={`Featured Products`}
